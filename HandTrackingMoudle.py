@@ -1,6 +1,3 @@
-#!/usr/bin/env python
-# -*- encoding: utf-8 -*-
-# Author:Dong Time:2021/4/12
 import cv2
 import mediapipe as mp
 import time
