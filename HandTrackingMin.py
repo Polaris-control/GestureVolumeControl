@@ -2,10 +2,14 @@ import cv2
 import mediapipe as mp
 import time
 
-# 获取视频对象，0为摄像头，也可以写入视频路径
-cap = cv2.VideoCapture("example.mp4")
+# 视频地址输入
+# Video address input settings
 
-# 参考资料：https://google.github.io/mediapipe/solutions/hands.html
+video_path = r"C:\Users\Administrator\GestureVolumeControl\TestVideo.mp4"
+
+cap = cv2.VideoCapture(video_path)
+
+
 mpHands = mp.solutions.hands
 # Hands是一个类，有四个初始化参数，static_image_mode,max_num_hands,min_detection_confidence,min_tracking_confidence
 hands = mpHands.Hands()

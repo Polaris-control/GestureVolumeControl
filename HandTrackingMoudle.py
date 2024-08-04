@@ -18,8 +18,12 @@ class handDetector():
         self.trackCon = trackCon
 
         self.mpHands = mp.solutions.hands
-        self.hands = self.mpHands.Hands(self.mode, self.maxhands,
-                                        self.detectionCon, self.trackCon)
+        self.hands = self.mpHands.Hands(
+            static_image_mode=self.mode,         # Ensure this is a boolean
+            max_num_hands=self.maxhands,         # Ensure this is an integer
+            min_detection_confidence=self.detectionCon,  # Ensure this is a float between 0 and 1
+            min_tracking_confidence=self.trackCon      # Ensure this is a float between 0 and 1
+        )
         self.mpDraw = mp.solutions.drawing_utils
 
     def findHands(self, img, draw=True):
@@ -61,13 +65,17 @@ if __name__ == "__main__":
 
     pTime = 0  # 开始时间初始化
 
-    cap = cv2.VideoCapture("example.mp4")
+    video_path = r"C:\Users\Administrator\GestureVolumeControl\TestVideo.mp4"
+
+    cap = cv2.VideoCapture(video_path)
     detector = handDetector()
 
     while True:
         success, img = cap.read()
+        if not success:
+            break
         img = detector.findHands(img, draw=True)
-        lmList = detector.findPosition(img, personDraw=False)
+        lmList = detector.findPosition(img, handNo=0, personDraw=False)
         if len(lmList) != 0:
             print(lmList[4])  # 食指最上部点的坐标
 
@@ -78,4 +86,8 @@ if __name__ == "__main__":
         cv2.putText(img, str(int(fps)), (10, 70), cv2.FONT_HERSHEY_PLAIN, 3,
                     (255, 0, 255), 1)
         cv2.imshow("Image", img)
-        cv2.waitKey(1)
+        if cv2.waitKey(1) & 0xFF == ord('q'):
+            break
+
+    cap.release()
+    cv2.destroyAllWindows()

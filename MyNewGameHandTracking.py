@@ -4,12 +4,15 @@ import HandTrackingMoudle as htm
 
 pTime = 0
 cTime = 0
-cap = cv2.VideoCapture('example.mp4')
+
+video_path = r"C:\Users\Administrator\GestureVolumeControl\TestVideo.mp4"
+
+cap = cv2.VideoCapture(video_path)
 detector = htm.handDetector()
 while True:
     success, img = cap.read()
     img = detector.findHands(img, draw=True)
-    lmList = detector.findPosition(img, draw=False)
+    lmList = detector.findPosition(img, handNo=0, personDraw=False)
     if len(lmList) != 0:
         print(lmList[4])
 
