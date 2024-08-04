@@ -1,6 +1,3 @@
-#!/usr/bin/env python
-# -*- encoding: utf-8 -*-
-# Author:Dong Time:2021/4/13
 import cv2
 import time
 import numpy as np
