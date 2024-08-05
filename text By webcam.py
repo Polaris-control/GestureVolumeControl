@@ -25,8 +25,8 @@ interface = devices.Activate(
 volume = interface.QueryInterface(IAudioEndpointVolume)
 volRange = volume.GetVolumeRange()
 
-minVol = volRange[0]  # 最小音量 / Minimum volume
-maxVol = volRange[1]  # 最大音量 / Maximum volume
+minVol = volRange[0] 
+maxVol = volRange[1] 
 volBar = 400  # 音量条的初始位置 / Initial position of volume bar
 vol = 0  # 当前音量 / Current volume
 volper = 0  # 音量百分比 / Volume percentage
