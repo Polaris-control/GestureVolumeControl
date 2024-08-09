@@ -1,10 +1,10 @@
-# Gesture Volume Control
+Gesture Volume Control
 
-## 简介
+简介
 
 这是一个基于手势控制音量的应用程序。通过使用 OpenCV 和 MediaPipe 进行手部追踪，本项目实现了通过手指距离控制系统音量的功能。
 
-## 主要功能
+主要功能
 
 - 使用摄像头实时检测手势。
 - 根据手指间的距离调整系统音量。
