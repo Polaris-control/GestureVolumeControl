@@ -83,7 +83,7 @@ else:
         cv2.putText(img, f'FPS: {int(fps)}', (40, 50), cv2.FONT_HERSHEY_COMPLEX, 1, (255, 0, 0), 2)
 
         cv2.imshow('img', img)  # 显示图像 / Display the image
-        if cv2.waitKey(1) & 0xFF == ord('q'):  # 按 'q' 键退出 / Press 'q' to exit
+        if cv2.waitKey(1) == 27:  # 按 'Esc' 键退出 / Press 'Esc' to exit
             break
 
     cap.release()  # 释放摄像头 / Release the webcam
